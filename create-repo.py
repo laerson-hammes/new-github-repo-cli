@@ -32,7 +32,7 @@ def main() -> None:
     parser.add_argument("-d", "--description", type=str, default="", dest="description", help="A short description of the repository.")
     parser.add_argument("-p", "--private", type=bool, default=False, dest="private", help="Whether the repository is private.")
     parser.add_argument("-ai", "--auto-init", type=bool, default=True, dest="auto_init", help="Whether the repository is initialized with a minimal README.")
-    parser.add_argument("-gi", "--gitignore", type=str, default="Python", dest="gitignore_template", help="The desired language or platform to apply to the .gitignore.")
+    parser.add_argument("-gi", "--gitignore", type=str, default="", dest="gitignore_template", help="The desired language or platform to apply to the .gitignore.")
     parser.add_argument("-l", "--license", type=str, default="", dest="license_template", help="The license keyword of the open source license for this repository.")
 
     options: argparse.Namespace = parser.parse_args()
