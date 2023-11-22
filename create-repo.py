@@ -10,19 +10,21 @@ load_dotenv(
     verbose=True
 )
 
-USERNAME = str(os.environ.get('USERNAME'))
+USERNAME = str(os.environ.get('GIT-USER'))
 TOKEN = str(os.environ.get('TOKEN'))
 URL = "https://api.github.com/user/repos"
 
 
 def post(options):
+    options: dict = vars(options)
     response = requests.post(
         URL,
         auth=HTTPBasicAuth(USERNAME, TOKEN),
-        json=vars(options)
+        json=options
     )
     if response.status_code == 201:
         print("Repository has been created...")
+        print(f"https://github.com/{USERNAME}/{options.get('name')}.git")
     else:
         print("Error...")
 
