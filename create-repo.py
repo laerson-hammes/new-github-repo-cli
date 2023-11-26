@@ -1,5 +1,6 @@
 from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv
+import pyperclip
 import requests
 import argparse
 import os
@@ -24,7 +25,10 @@ def post(options):
     )
     if response.status_code == 201:
         print("Repository has been created...")
-        print(f"https://github.com/{USERNAME}/{options.get('name')}.git")
+        print("Adding repo link to clipboard...")
+        repo: str = f"https://github.com/{USERNAME}/{options.get('name')}.git"
+        pyperclip.copy(repo)
+        print(repo)
     else:
         print("Error...")
 
